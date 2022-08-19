@@ -3,8 +3,8 @@
 **
 **  File        : LinkerScript.ld
 **
-**  Abstract    : Linker script for STM32F769NIHx Device with
-**                2048KByte FLASH, 512KByte RAM
+**  Abstract    : Linker script for STM32F746NGHx Device with
+**                1024KByte FLASH, 320KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -34,14 +34,14 @@
 __ICFEDIT_SWAP_start__           = 0x08040000;  
 __ICFEDIT_SWAP_end__             = 0x0807FFFF;
 
-/* Active slot #1 (768 kbytes) */
+/* Active slot #1 (256 kbytes) */
 __ICFEDIT_SLOT_Active_1_start__  = 0x08080000;  
-__ICFEDIT_SLOT_Active_1_end__    = 0x0813FFFF;
+__ICFEDIT_SLOT_Active_1_end__    = 0x080BFFFF;
 __ICFEDIT_SLOT_Active_1_header__ = __ICFEDIT_SLOT_Active_1_start__;
 
-/* Dwl slot #1 (768 kbytes) */
-__ICFEDIT_SLOT_Dwl_1_start__     = 0x08140000;  
-__ICFEDIT_SLOT_Dwl_1_end__       = 0x081FFFFF;
+/* Dwl slot #1 (256 kbytes) */
+__ICFEDIT_SLOT_Dwl_1_start__     = 0x080C0000;  
+__ICFEDIT_SLOT_Dwl_1_end__       = 0x080FFFFF;
 
 
 /* Slots not configured */

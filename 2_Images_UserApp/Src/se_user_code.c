@@ -23,7 +23,7 @@
 #include "com.h"
 #include "common.h"
 #include "stm32f7xx_hal.h"
-#include "stm32f769i_discovery.h"
+#include "stm32746g_discovery.h"
 #include "se_user_code.h"
 #include "se_interface_application.h"
 #include "sfu_fwimg_regions.h"

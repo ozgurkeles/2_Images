@@ -26,8 +26,8 @@ extern "C" {
 #endif
 
 /* Exported macros -----------------------------------------------------------*/
-#define BUTTON_INIT()         BSP_PB_Init(BUTTON_USER,BUTTON_MODE_GPIO);
-#define BUTTON_PUSHED()      ((uint32_t) BSP_PB_GetState(BUTTON_USER) == (uint32_t)GPIO_PIN_SET)
+#define BUTTON_INIT()         BSP_PB_Init(BUTTON_TAMPER,BUTTON_MODE_GPIO);
+#define BUTTON_PUSHED()      ((uint32_t) BSP_PB_GetState(BUTTON_TAMPER) == (uint32_t)GPIO_PIN_SET)
 
 
 #ifdef __cplusplus

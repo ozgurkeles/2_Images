@@ -3,8 +3,8 @@
 **
 **  File        : LinkerScript.ld
 **
-**  Abstract    : Linker script for STM32F769NIHx Device with
-**                2048KByte FLASH, 512KByte RAM
+**  Abstract    : Linker script for STM32F746NGHx Device with
+**                1024KByte FLASH, 320KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -63,17 +63,17 @@ SB_ROM_region_Length              = __ICFEDIT_SB_region_ROM_end__ - __ICFEDIT_SB
 /* RAM section */
 /* SE RAM1 region protected by protected area */
 /* SE stack is placed 1st in RAM, stack overflow does not write on other RAM area */
-__ICFEDIT_SE_region_RAM_start__     = 0x20020000;
-__ICFEDIT_SE_region_RAM_stack_top__ = 0x20020400;
-__ICFEDIT_SE_region_RAM_end__       = 0x20020FFF;
+__ICFEDIT_SE_region_RAM_start__     = 0x20010000;
+__ICFEDIT_SE_region_RAM_stack_top__ = 0x20010400;
+__ICFEDIT_SE_region_RAM_end__       = 0x20010FFF;
 
 /* SBSFU RAM1 region */
 __ICFEDIT_SB_region_RAM_start__     = __ICFEDIT_SE_region_RAM_end__ + 0x1;
-__ICFEDIT_SB_region_RAM_end__       = 0x2007BFEF;
+__ICFEDIT_SB_region_RAM_end__       = 0x2004BFEF;
 
 /* Shared RAM for Image State Handling */
 __ICFEDIT_SB_FWIMG_STATE_region_RAM_start__ = __ICFEDIT_SB_region_RAM_end__ + 1;
-__ICFEDIT_SB_FWIMG_STATE_region_RAM_end__   = 0x2007BFFF;
+__ICFEDIT_SB_FWIMG_STATE_region_RAM_end__   = 0x2004BFFF;
 
 SE_RAM_region_Length = __ICFEDIT_SE_region_RAM_end__ - __ICFEDIT_SE_region_RAM_stack_top__ + 1;
 SB_RAM_region_Length = __ICFEDIT_SB_region_RAM_end__ - __ICFEDIT_SB_region_RAM_start__ + 1;

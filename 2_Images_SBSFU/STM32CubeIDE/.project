@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>STM32F769I_Discovery_2_Images_SBSFU</name>
+	<name>STM32F746G_Discovery_2_Images_SBSFU</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -266,9 +266,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SBSFU/Target/sfu_low_level_security.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/STM32F769I-Discovery/stm32f769i_discovery.c</name>
+			<name>Drivers/BSP/STM32F746G-Discovery/stm32746g_discovery.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32F769I-Discovery/stm32f769i_discovery.c</locationURI>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32F746G-Discovery/stm32746g_discovery.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -25,7 +25,7 @@
 #include "common.h"
 #include "flash_if.h"
 #include "stm32f7xx_hal.h"
-#include "stm32f769i_discovery.h"
+#include "stm32746g_discovery.h"
 #include "fw_update_app.h"
 #include "se_interface_application.h"
 #include "sfu_fwimg_regions.h"

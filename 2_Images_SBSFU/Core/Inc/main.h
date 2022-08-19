@@ -22,7 +22,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
-#include "stm32f769i_discovery.h"
+#include "stm32746g_discovery.h"
 #include "app_sfu.h"
 #include "app_hw.h"
 

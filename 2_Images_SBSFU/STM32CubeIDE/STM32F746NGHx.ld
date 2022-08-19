@@ -3,8 +3,8 @@
 **
 **  File        : LinkerScript.ld
 **
-**  Abstract    : Linker script for STM32F769NIHx Device with
-**                2048KByte FLASH, 512KByte RAM
+**  Abstract    : Linker script for STM32F746NGHx Device with
+**                1024KByte FLASH, 320KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.

@@ -1,0 +1,13 @@
+/2_Images_SECoreBin/STM32CubeIDE/.settings/
+/2_Images_SBSFU/STM32CubeIDE/.settings/
+/2_Images_UserApp/STM32CubeIDE/.settings/
+/2_Images_SECoreBin/STM32CubeIDE/Debug/
+/2_Images_SBSFU/STM32CubeIDE/Debug/
+/2_Images_UserApp/STM32CubeIDE/Debug/
+/2_Images_UserApp/Binary/
+/2_Images_UserApp/STM32CubeIDE/UserApp.bin
+/2_Images_SECoreBin/STM32CubeIDE/postbuild.sh
+/2_Images_SECoreBin/STM32CubeIDE/output.txt
+/2_Images_UserApp/STM32CubeIDE/output.txt
+/2_Images_SECoreBin/Binary/iv.bin
+/2_Images_SECoreBin/STM32CubeIDE/crypto.txt

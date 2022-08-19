@@ -22,7 +22,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
-#include "stm32f769i_discovery.h"
+#include "stm32746g_discovery.h"
 #include "com.h"
 
 /* Exported types ------------------------------------------------------------*/
@@ -30,8 +30,8 @@
 /* User can use this section to tailor UARTx instance used and associated
    resources */
 
-#define BUTTON_INIT()         BSP_PB_Init(BUTTON_USER,BUTTON_MODE_GPIO);
-#define BUTTON_PUSHED()      (BSP_PB_GetState(BUTTON_USER) == GPIO_PIN_SET)
+#define BUTTON_INIT()         BSP_PB_Init(BUTTON_TAMPER,BUTTON_MODE_GPIO);
+#define BUTTON_PUSHED()      (BSP_PB_GetState(BUTTON_TAMPER) == GPIO_PIN_SET)
 
 /* Definition for USARTx clock resources */
 #define SFU_UART                                USART1
