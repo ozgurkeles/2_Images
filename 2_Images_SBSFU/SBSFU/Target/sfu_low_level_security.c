@@ -569,11 +569,15 @@ SFU_ErrorStatus SFU_LL_SECU_CheckFlashConfiguration(FLASH_OBProgramInitTypeDef *
 {
   SFU_ErrorStatus e_ret_status = SFU_ERROR;
 
+#if defined (FLASH_OPTCR_nDBANK)
   /* Check BFB2 bit ***********************************************************/
   if ((psFlashOptionBytes->USERConfig & OB_NDBANK_SINGLE_BANK) == OB_NDBANK_SINGLE_BANK)
   {
     e_ret_status = SFU_SUCCESS; /* Single bank mode already configured */
   }
+#else
+  e_ret_status = SFU_SUCCESS;
+#endif
   if (e_ret_status == SFU_SUCCESS)
   {
     /* Execution stopped if flow control failed */
