@@ -28,13 +28,12 @@
 #include "sfu_error.h"
 
 /* Private defines -----------------------------------------------------------*/
-#define NB_PAGE_SECTOR_PER_ERASE  2U    /*!< Nb page erased per erase */
+#define NB_PAGE_SECTOR_PER_ERASE  1U    /*!< Nb page erased per erase */
 
 /* Private variables ---------------------------------------------------------*/
 
 uint32_t FlashSectorsAddress[] = {0x08000000U, 0x08008000U, 0x08010000U, 0x08018000U, 0x08020000U, 0x08040000U,
-                                  0x08080000U, 0x080C0000U, 0x08100000U, 0x08140000U, 0x08180000U, 0x081C0000U,
-                                  0x08200000U
+                                  0x08080000U, 0x080C0000U
                                  };
 
 static SFU_ErrorStatus SFU_LL_FLASH_INT_Clear_Error(void);

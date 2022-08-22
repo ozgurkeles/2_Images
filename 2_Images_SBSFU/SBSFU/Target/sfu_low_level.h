@@ -52,10 +52,10 @@ typedef enum
 #define SFU_UART_TX_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()
 
 #define SFU_UART_RX_AF                          GPIO_AF7_USART1
-#define SFU_UART_RX_GPIO_PORT                   GPIOA
-#define SFU_UART_RX_PIN                         GPIO_PIN_10
-#define SFU_UART_RX_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOA_CLK_ENABLE()
-#define SFU_UART_RX_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOA_CLK_DISABLE()
+#define SFU_UART_RX_GPIO_PORT                   GPIOB
+#define SFU_UART_RX_PIN                         GPIO_PIN_7
+#define SFU_UART_RX_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOB_CLK_ENABLE()
+#define SFU_UART_RX_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOB_CLK_DISABLE()
 
 /* Uncomment to enable the adequate Clock Source */
 #define RTC_CLOCK_SOURCE_LSI

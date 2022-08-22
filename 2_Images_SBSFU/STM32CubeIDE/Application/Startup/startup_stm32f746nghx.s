@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32f769xx.s
+  * @file      startup_stm32f746xx.s
   * @author    MCD Application Team
-  * @brief     STM32F769xx Devices vector table for GCC based toolchain.
+  * @brief     STM32F746xx Devices vector table for GCC based toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -17,8 +17,8 @@
   * Copyright (c) 2016 STMicroelectronics.
   * All rights reserved.
   *
-  * This software is licensed under terms that can be found in the LICENSE file in
-  * the root directory of this software component.
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
@@ -61,38 +61,41 @@ Reset_Handler:
   ldr   sp, =_estack      /* set stack pointer */
 
 /* Copy the data segment initializers from flash to SRAM */
-  movs  r1, #0
-  b  LoopCopyDataInit
+  ldr r0, =_sdata
+  ldr r1, =_edata
+  ldr r2, =_sidata
+  movs r3, #0
+  b LoopCopyDataInit
 
 CopyDataInit:
-  ldr  r3, =_sidata
-  ldr  r3, [r3, r1]
-  str  r3, [r0, r1]
-  adds  r1, r1, #4
+  ldr r4, [r2, r3]
+  str r4, [r0, r3]
+  adds r3, r3, #4
 
 LoopCopyDataInit:
-  ldr  r0, =_sdata
-  ldr  r3, =_edata
-  adds  r2, r0, r1
-  cmp  r2, r3
-  bcc  CopyDataInit
-  ldr  r2, =_sbss
-  b  LoopFillZerobss
+  adds r4, r0, r3
+  cmp r4, r1
+  bcc CopyDataInit
+
 /* Zero fill the bss segment. */
+  ldr r2, =_sbss
+  ldr r4, =_ebss
+  movs r3, #0
+  b LoopFillZerobss
+
 FillZerobss:
-  movs  r3, #0
-  str  r3, [r2], #4
+  str  r3, [r2]
+  adds r2, r2, #4
 
 LoopFillZerobss:
-  ldr  r3, = _ebss
-  cmp  r2, r3
-  bcc  FillZerobss
+  cmp r2, r4
+  bcc FillZerobss
 
 /* Call the clock system initialization function.*/
   bl  SystemInit
 /* Call static constructors */
     bl __libc_init_array
-/* Call the application entry point.*/
+/* Call the application's entry point.*/
   bl  main
   bx  lr
 .size  Reset_Handler, .-Reset_Handler
@@ -221,17 +224,17 @@ g_pfnVectors:
   .word     OTG_HS_IRQHandler                 /* USB OTG HS                   */
   .word     DCMI_IRQHandler                   /* DCMI                         */
   .word     0                                 /* Reserved                     */
-  .word     RNG_IRQHandler                    /* RNG                          */
+  .word     RNG_IRQHandler                    /* Rng                          */
   .word     FPU_IRQHandler                    /* FPU                          */
   .word     UART7_IRQHandler                  /* UART7                        */
   .word     UART8_IRQHandler                  /* UART8                        */
   .word     SPI4_IRQHandler                   /* SPI4                         */
-  .word     SPI5_IRQHandler                   /* SPI5                         */
+  .word     SPI5_IRQHandler                   /* SPI5                           */
   .word     SPI6_IRQHandler                   /* SPI6                         */
-  .word     SAI1_IRQHandler                   /* SAI1                         */
-  .word     LTDC_IRQHandler                   /* LTDC                         */
-  .word     LTDC_ER_IRQHandler                /* LTDC error                   */
-  .word     DMA2D_IRQHandler                  /* DMA2D                        */
+  .word     SAI1_IRQHandler                   /* SAI1                          */
+  .word     LTDC_IRQHandler                   /* LTDC                          */
+  .word     LTDC_ER_IRQHandler                /* LTDC error                      */
+  .word     DMA2D_IRQHandler                  /* DMA2D                          */
   .word     SAI2_IRQHandler                   /* SAI2                         */
   .word     QUADSPI_IRQHandler                /* QUADSPI                      */
   .word     LPTIM1_IRQHandler                 /* LPTIM1                       */
@@ -239,18 +242,6 @@ g_pfnVectors:
   .word     I2C4_EV_IRQHandler                /* I2C4 Event                   */
   .word     I2C4_ER_IRQHandler                /* I2C4 Error                   */
   .word     SPDIF_RX_IRQHandler               /* SPDIF_RX                     */
-  .word     DSI_IRQHandler                    /* DSI                          */
-  .word     DFSDM1_FLT0_IRQHandler            /* DFSDM1 Filter 0 global Interrupt */
-  .word     DFSDM1_FLT1_IRQHandler            /* DFSDM1 Filter 1 global Interrupt */
-  .word     DFSDM1_FLT2_IRQHandler            /* DFSDM1 Filter 2 global Interrupt */
-  .word     DFSDM1_FLT3_IRQHandler            /* DFSDM1 Filter 3 global Interrupt */
-  .word     SDMMC2_IRQHandler                 /* SDMMC2                       */
-  .word     CAN3_TX_IRQHandler                /* CAN3 TX                      */
-  .word     CAN3_RX0_IRQHandler               /* CAN3 RX0                     */
-  .word     CAN3_RX1_IRQHandler               /* CAN3 RX1                     */
-  .word     CAN3_SCE_IRQHandler               /* CAN3 SCE                     */
-  .word     JPEG_IRQHandler                   /* JPEG                         */
-  .word     MDIOS_IRQHandler                  /* MDIOS                        */
 
 /*******************************************************************************
 *
@@ -469,9 +460,6 @@ g_pfnVectors:
    .weak      DMA2_Stream4_IRQHandler
    .thumb_set DMA2_Stream4_IRQHandler,Default_Handler
 
-   .weak      DMA2_Stream4_IRQHandler
-   .thumb_set DMA2_Stream4_IRQHandler,Default_Handler
-
    .weak      ETH_IRQHandler
    .thumb_set ETH_IRQHandler,Default_Handler
 
@@ -580,39 +568,4 @@ g_pfnVectors:
    .weak      SPDIF_RX_IRQHandler
    .thumb_set SPDIF_RX_IRQHandler,Default_Handler
 
-   .weak      DSI_IRQHandler
-   .thumb_set DSI_IRQHandler,Default_Handler
-
-   .weak      DFSDM1_FLT0_IRQHandler
-   .thumb_set DFSDM1_FLT0_IRQHandler,Default_Handler
-
-   .weak      DFSDM1_FLT1_IRQHandler
-   .thumb_set DFSDM1_FLT1_IRQHandler,Default_Handler
-
-   .weak      DFSDM1_FLT2_IRQHandler
-   .thumb_set DFSDM1_FLT2_IRQHandler,Default_Handler
-
-   .weak      DFSDM1_FLT3_IRQHandler
-   .thumb_set DFSDM1_FLT3_IRQHandler,Default_Handler
-
-   .weak      SDMMC2_IRQHandler
-   .thumb_set SDMMC2_IRQHandler,Default_Handler
-
-   .weak      CAN3_TX_IRQHandler
-   .thumb_set CAN3_TX_IRQHandler,Default_Handler
-
-   .weak      CAN3_RX0_IRQHandler
-   .thumb_set CAN3_RX0_IRQHandler,Default_Handler
-
-   .weak      CAN3_RX1_IRQHandler
-   .thumb_set CAN3_RX1_IRQHandler,Default_Handler
-
-   .weak      CAN3_SCE_IRQHandler
-   .thumb_set CAN3_SCE_IRQHandler,Default_Handler
-
-   .weak      JPEG_IRQHandler
-   .thumb_set JPEG_IRQHandler,Default_Handler
-
-   .weak      MDIOS_IRQHandler
-   .thumb_set MDIOS_IRQHandler,Default_Handler
 
