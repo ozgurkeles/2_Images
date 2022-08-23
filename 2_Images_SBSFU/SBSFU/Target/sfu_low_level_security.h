@@ -86,7 +86,7 @@ extern "C" {
   */
 #define SFU_PROTECT_MPU_FLASHACC_RGNV  MPU_REGION_NUMBER2
 #define SFU_PROTECT_MPU_FLASHACC_START FLASH_BASE          /*!< Flash memory area */
-#define SFU_PROTECT_MPU_FLASHACC_SIZE  MPU_REGION_SIZE_2MB
+#define SFU_PROTECT_MPU_FLASHACC_SIZE  MPU_REGION_SIZE_1MB
 #define SFU_PROTECT_MPU_FLASHACC_SREG  0x00U               /*!< All subregions activated */
 #define SFU_PROTECT_MPU_FLASHACC_PERM  MPU_REGION_FULL_ACCESS
 #define SFU_PROTECT_MPU_FLASHACC_EXECV MPU_INSTRUCTION_ACCESS_DISABLE
@@ -131,7 +131,7 @@ extern "C" {
 #define SFU_PROTECT_MPU_SRAMACC_RGNV  MPU_REGION_NUMBER5
 #define SFU_PROTECT_MPU_SRAMACC_START RAMDTCM_BASE         /*!< RAM memory area */
 #define SFU_PROTECT_MPU_SRAMACC_SIZE  MPU_REGION_SIZE_512KB
-#define SFU_PROTECT_MPU_SRAMACC_SREG  0x03U                /*!< 512 Kbytes / 8 * 2 ==>  128 Kbytes */
+#define SFU_PROTECT_MPU_SRAMACC_SREG  0x01U                /*!< 512 Kbytes / 8 * 1 ==>  64 Kbytes */
 #define SFU_PROTECT_MPU_SRAMACC_PERM  MPU_REGION_FULL_ACCESS
 #define SFU_PROTECT_MPU_SRAMACC_EXECV MPU_INSTRUCTION_ACCESS_DISABLE
 #define SFU_PROTECT_MPU_SRAMACC_TEXV  MPU_TEX_LEVEL0
@@ -183,7 +183,7 @@ extern "C" {
   */
 #define APP_PROTECT_MPU_FLASHEXE_RGNV  MPU_REGION_NUMBER3
 #define APP_PROTECT_MPU_FLASHEXE_START FLASH_BASE
-#define APP_PROTECT_MPU_FLASHEXE_SIZE  MPU_REGION_SIZE_2MB
+#define APP_PROTECT_MPU_FLASHEXE_SIZE  MPU_REGION_SIZE_1MB
 #define APP_PROTECT_MPU_FLASHEXE_SREG  0xE2U               /*!< subregion 0 (activated): SBSFU
                                                                 subregion 1 (de-activated) : Swap
                                                                 subregions 2,3,4 (activated) : active slot(s) */
