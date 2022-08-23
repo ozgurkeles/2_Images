@@ -58,7 +58,7 @@ extern "C" {
 #define SFU_DEBUG_MODE               /*!< Comment this define to optimize memory footprint (debug mode removed)
                                           No more print on terminal during SBSFU execution */
 
-/*#define SFU_VERBOSE_DEBUG_MODE*/   /*!< Uncomment this define when in verbose Debug mode.
+#define SFU_VERBOSE_DEBUG_MODE   /*!< Uncomment this define when in verbose Debug mode.
                                           this switch activates more debug prints in the console (FSM state info...) */
 
 
@@ -157,11 +157,11 @@ extern "C" {
 #define SFU_DAP_PROTECT_ENABLE     /*!< WARNING: Be Careful if enabling this protection. Debugger will be disconnected.
                                         It might be difficult to reconnect the Debugger.*/
 #define SFU_DMA_PROTECT_ENABLE
-#define SFU_IWDG_PROTECT_ENABLE    /*!< WARNING:
-                                        1. Be Careful if enabling this protection. IWDG will be active also after
-                                           switching to UserApp: a refresh is needed.
-                                        2. The IWDG reload in the SB_SFU code will have to be tuned depending on your
-                                           platform (flash size...)*/
+//#define SFU_IWDG_PROTECT_ENABLE    /*!< WARNING:
+//                                        1. Be Careful if enabling this protection. IWDG will be active also after
+//                                           switching to UserApp: a refresh is needed.
+//                                        2. The IWDG reload in the SB_SFU code will have to be tuned depending on your
+//                                           platform (flash size...)*/
 #define SFU_MPU_PROTECT_ENABLE     /*!< MPU protection:
                                         Enables/Disables the MPU protection.
                                         If Secure Engine isolation is ensured by MPU (see SFU_ISOLATE_SE_WITH_MPU in
